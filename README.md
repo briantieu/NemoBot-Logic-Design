@@ -1,2 +1,2 @@
 # NemoBot-Logic-Design
-An educational program that teaches logic design through a messenger chat bot.
+An educational program that teaches logic design through a Facebook messenger chat bot.
