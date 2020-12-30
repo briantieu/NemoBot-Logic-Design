@@ -1,18 +1,22 @@
 'use strict';
 
 
-
+// start function
 const start = (say, sendButton) => {
 	say('A Boolean expression is a sentence consisting of Boolean variables, constants, and operators.').then(() => {
 	    sendButton('Which of the following is a Boolean variable?', [{title: 'True', payload: '0-0'}, {title: 'a', payload: '0-1'}, {title: 'AND', payload: '0-2'}]);
     });
 };
 
+// state function
 const state = (payload, say, sendButton) => {
+    
+    // splits the payload, ex. '1-1' is interpreted as currentState = 1, playerSelection = 1
     const array = payload.split('-');
     const currentState = parseInt(array[0]);
     const playerSelection = parseInt(array[1]);
     
+    // iterates through each state based on the payload currentState value, goes linearly
     switch (currentState) {
         case 0:
             checkCorrectness(say, playerSelection, 1);
@@ -24,9 +28,9 @@ const state = (payload, say, sendButton) => {
 	    break;
 	    case 2:
 	        checkCorrectness(say, playerSelection, 2);
-	        setTimeout(say(['Let’s try evaluating a Boolean expression!','If a = TRUE, b = FALSE, c = TRUE, d = TRUE, what is:']).then(() => {
-	            sendButton('(a AND b) OR (c AND d)?', [{title: 'True', payload: '3-0'}, {title: 'False', payload: '3-1'}]);
-	        }), 1000);
+	        say(['Let’s try evaluating a Boolean expression!','If a = TRUE, b = FALSE, c = TRUE, d = TRUE, what is:']).then(() => {
+	                sendButton('(a AND b) OR (c AND d)?', [{title: 'True', payload: '3-0'}, {title: 'False', payload: '3-1'}]);
+	        });
 	    break;
 	    case 3:
 	        checkCorrectness(say, playerSelection, 0);
@@ -57,6 +61,7 @@ const state = (payload, say, sendButton) => {
     }
 };
 
+// says 'Correct' or 'Incorrect' based on the player's answer
 const checkCorrectness = (say, a, b) => {
     if (a === b) { say('Correct'); }
 	else { say('Incorrect'); }
