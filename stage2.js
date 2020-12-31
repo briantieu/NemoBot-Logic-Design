@@ -35,38 +35,44 @@ const state = (payload, say, sendButton) => {
 	    case 3:
 	        checkCorrectness(say, playerSelection, 0);
 	        say(['Instead of typing out AND, OR, and NOT every time, we can represent them in a more compact way.',
-	        'AND can be represented by *\nOR can be represented by +\nNOT can be represented by ’\nTRUE can be represented by 1\nFALSE can be represented by 0',
-	        'So, our original expression can be rewritten as: {(a * b) + (c * d), (a + b) * (c + d)}',
-	        'We can also convert English statements into Boolean expressions! This allows us to translate every day decisions and processes into logical, consistent mathematical expressions. Let’s try a few!'
-            ]).then(() => {
-                sendButton('F is 1 only when a is 1 and b is 1.', [{title: 'F = a + b', payload: '4-0'}, {title: 'F = a * b', payload: '4-1'}, {title: 'F = a\' + b\'', payload: '4-2'}]);
-            });
+	        'AND can be represented by *\nOR can be represented by +\nNOT can be represented by ’\nTRUE can be represented by 1\nFALSE can be represented by 0']).then(() => {
+	            sendButton('So, our original expression can be rewritten as:', [{title: '(a * b) + (c * d)', payload: '4-0'}, {title: '(a + b) * (c + d)', payload: '4-1'}])
+	        });
+	        
+	        
 	    break;
 	    case 4:
+	        checkCorrectness
+	        say('We can also convert English statements into Boolean expressions! This allows us to translate every day decisions and processes into logical, consistent mathematical expressions. Let’s try a few!'
+            ).then(() => {
+                sendButton('F is 1 only when a is 1 and b is 1.', [{title: 'F = a + b', payload: '5-0'}, {title: 'F = a * b', payload: '5-1'}, {title: 'F = a\' + b\'', payload: '5-2'}]);
+            });
+	    break;
+	    case 5:
 	        checkCorrectness(say, playerSelection, 1);
-	        sendButton('F is 1 only when a is 1 and b is 0.', [{title: 'F = a * b\'', payload: '5-0'}, {title: 'F = a + b', payload: '5-1'}, {title: 'F = a\' + b\'', payload: '5-2'}]);
-        break;
-        case 5:
-            checkCorrectness(say, playerSelection, 0);
-            sendButton('How about an English scenario? The bulb should light up when the switch is clicked and the power is on.',
-            [{title: 'bulb = switch + power', payload: '6-0'}, {title: 'bulb = switch\' + power', payload: '6-1'}, {title: 'bulb = switch * power', payload: '6-2'}]);
+	        sendButton('F is 1 only when a is 1 and b is 0.', [{title: 'F = a * b\'', payload: '6-0'}, {title: 'F = a + b', payload: '6-1'}, {title: 'F = a\' + b\'', payload: '6-2'}]);
         break;
         case 6:
-            checkCorrectness(say, playerSelection, 2);
-            sendButton('Nemo Bot will be sad if you close out of the app or answer a question with an incorrect response.',
-            [{title: 'sad = closed + correct\'', payload: '7-0'} , {title: 'sad = closed\' * correct', payload: '7-1'}, {title: 'sad = closed + correct', payload: '7-2'}]);
+            checkCorrectness(say, playerSelection, 0);
+            sendButton('How about an English scenario? The bulb should light up when the switch is clicked and the power is on.',
+            [{title: 'bulb = switch + power', payload: '7-0'}, {title: 'bulb = switch\' + power', payload: '7-1'}, {title: 'bulb = switch * power', payload: '7-2'}]);
         break;
         case 7:
-            checkCorrectness(say, playerSelection, 0);
-            say(['Boolean Algebra has certain properties that allow us to simplify expressions. These include: *image here*','Let\'s try to put these in practice!']).then(() => {
-                sendButton('What is the correct simplification of a + a\'b? Note that a\'b is the same as a\' * b.', [{title: 'ab', payload: '8-0'}, {title: 'a + b', payload: '8-1'}, {title: 'a\'b', payload: '8-2'}]);
-            });
+            checkCorrectness(say, playerSelection, 2);
+            sendButton('Nemo Bot will be sad if you close out of the app or answer a question with an incorrect response.',
+            [{title: 'sad = closed + correct\'', payload: '8-0'} , {title: 'sad = closed\' * correct', payload: '8-1'}, {title: 'sad = closed + correct', payload: '8-2'}]);
         break;
         case 8:
-            checkCorrectness(say, playerSelection, 1);
-            sendButton('What is the correct simplification of (a + b)(a + c)?', [{title: '1', payload: '9-0'}, {title: 'abc', payload: '9-1'}, {title: 'a + bc', payload: '9-2'}]);
+            checkCorrectness(say, playerSelection, 0);
+            say(['Boolean Algebra has certain properties that allow us to simplify expressions. These include: *image here*','Let\'s try to put these in practice!']).then(() => {
+                sendButton('What is the correct simplification of a + a\'b? Note that a\'b is the same as a\' * b.', [{title: 'ab', payload: '9-0'}, {title: 'a + b', payload: '9-1'}, {title: 'a\'b', payload: '9-2'}]);
+            });
         break;
         case 9:
+            checkCorrectness(say, playerSelection, 1);
+            sendButton('What is the correct simplification of (a + b)(a + c)?', [{title: '1', payload: '10-0'}, {title: 'abc', payload: '10-1'}, {title: 'a + bc', payload: '10-2'}]);
+        break;
+        case 10:
             checkCorrectness(say, playerSelection, 2);
         break;
     }
