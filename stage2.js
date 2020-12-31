@@ -36,13 +36,11 @@ const state = (payload, say, sendButton) => {
 	        checkCorrectness(say, playerSelection, 0);
 	        say(['Instead of typing out AND, OR, and NOT every time, we can represent them in a more compact way.',
 	        'AND can be represented by *\nOR can be represented by +\nNOT can be represented by ’\nTRUE can be represented by 1\nFALSE can be represented by 0']).then(() => {
-	            sendButton('So, our original expression can be rewritten as:', [{title: '(a * b) + (c * d)', payload: '4-0'}, {title: '(a + b) * (c + d)', payload: '4-1'}])
+	            sendButton('So, our original expression, (a AND b) OR (c AND d),  can be rewritten as:', [{title: '(a * b) + (c * d)', payload: '4-0'}, {title: '(a + b) * (c + d)', payload: '4-1'}])
 	        });
-	        
-	        
 	    break;
 	    case 4:
-	        checkCorrectness
+	        checkCorrectness(say, playerSelection, 0);
 	        say('We can also convert English statements into Boolean expressions! This allows us to translate every day decisions and processes into logical, consistent mathematical expressions. Let’s try a few!'
             ).then(() => {
                 sendButton('F is 1 only when a is 1 and b is 1.', [{title: 'F = a + b', payload: '5-0'}, {title: 'F = a * b', payload: '5-1'}, {title: 'F = a\' + b\'', payload: '5-2'}]);
