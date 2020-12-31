@@ -58,6 +58,17 @@ const state = (payload, say, sendButton) => {
         break;
         case 7:
             checkCorrectness(say, playerSelection, 0);
+            say(['Boolean Algebra has certain properties that allow us to simplify expressions. These include: *image here*','Let\'s try to put these in practice!']).then(() => {
+                sendButton('What is the correct simplification of a + a\'b? Note that a\'b is the same as a\' * b.', [{title: 'ab', payload: '8-0'}, {title: 'a + b', payload: '8-1'}, {title: 'a\'b', payload: '8-2'}]);
+            });
+        break;
+        case 8:
+            checkCorrectness(say, playerSelection, 1);
+            sendButton('What is the correct simplification of (a + b)(a + c)?', [{title: '1', payload: '9-0'}, {title: 'abc', payload: '9-1'}, {title: 'a + bc', payload: '9-2'}]);
+        break;
+        case 9:
+            checkCorrectness(say, playerSelection, 2);
+        break;
     }
 };
 
